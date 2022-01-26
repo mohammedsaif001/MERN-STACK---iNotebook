@@ -1,27 +1,43 @@
-const express = require('express');
-const User = require('../models/User');
-const router = express.Router(); 
-const { body, validationResult } = require('express-validator');
+const express = require("express");
+const User = require("../models/User");
+const router = express.Router();
+const { body, validationResult } = require("express-validator");
 
 // Checking Validation using express-validator
-router.post('/',[ 
-    body('name',"Enter a Valid Name").isLength({ min: 3 }),
-    body('email',"Enter a Valid Email").isEmail(),
-    body('password',"Password must be atleast 5 characters").isLength({ min: 5 }),
-], (req, res)=>{ 
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
+//Create a USer Using POST : '/api/auth/createuser' -> No LOgin Require
+router.post(
+    "/createuser",
+    [
+        body("name", "Enter a Valid Name").isLength({ min: 3 }),
+        body("email", "Enter a Valid Email").isEmail(),
+        body("password", "Password must be atleast 5 characters").isLength({
+            min: 5,
+        }),
+    ],
+    async (req, res) => {
+        //If there are errors, return Bad Request & the Errors
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
-    User.create({
-        name: req.body.name,
-        email: req.body.email,
-        password: req.body.password,
-      }).then(user => res.json(user))
-      .catch((err) => { console.log(err)
-    res.json({error : "Enter a Unique E-mail ID", message : err.message})});
+        //Check Whether the user with this email exists already
+        try {
+            let user = await User.findOne({ email: req.body.email });
+            if (user) {
+                return res.status(400).json({ error: "Sorry a User with Email ALready Exists" });
+            }
+            //Creating a New User using Express-Validation
+            user = await User.create({
+                name: req.body.name,
+                email: req.body.email,
+                password: req.body.password,
+            });
+            res.json(user); //Displaying record in response body
+        } catch (error) {
+            console.error(error.mesaage);
+            res.status(500).send("Some Error Occured");
+        }
+    });
 
-} )
-
-module.exports = router
+module.exports = router;
