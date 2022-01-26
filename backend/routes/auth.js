@@ -55,8 +55,49 @@ router.post(
             // res.json(user);// Displaying record in response body
         } catch (error) {
             console.error(error.mesaage);
-            res.status(500).send("Some Error Occured");
+            res.status(500).send("Internal Server Error");
         }
     });
 
-module.exports = router;
+
+//Uthenticate a USer Using POST : '/api/auth/login' -> No LOgin Require
+router.post(
+    "/login",
+    [
+        body("email", "Enter a Valid Email").isEmail(),
+        body("password", "Password Can't be Blank").exists()
+    ],
+    async (req, res) => {
+        //If there are errors, return Bad Request & the Errors
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        const {email,password} = req.body;
+        try {
+            let user =await User.findOne({email});
+            if(!user){
+                return res.status(400).json({error : "Login With Correct Credentials!!!"});
+            }
+
+            const pwdCompare = await bcrypt.compare(password,user.password); //Comapring password of user input and the one stored in DB
+            if(!pwdCompare){
+                return res.status(400).json({error : "Login With Correct Credentials!!!"});
+            }
+
+            const data = {
+                user :{
+                    id : user.id
+                }
+            }
+            const authToken = jwt.sign(data,JWT_SECRET);
+            res.json({authToken}); 
+        } catch (error) {
+            console.error(error.mesaage);
+            res.status(500).send("Internal Server Error");
+        }
+
+    }
+)
+
+ module.exports = router;
