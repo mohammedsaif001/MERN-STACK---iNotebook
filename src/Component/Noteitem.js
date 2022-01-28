@@ -4,10 +4,15 @@ export default function Noteitem(props) {
     let { notes } = props
     return <>
         <div className="col-md-3">
-            <div class="card my-3">
-                <div class="card-body">
-                    <h5 class="card-title">{notes.title}</h5>
-                    <p class="card-text">{notes.description} Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, culpa explicabo repellendus hic impedit ex porro incidunt eveniet unde ipsum recusandae saepe cupiditate minus error adipisci necessitatibus temporibus alias deserunt suscipit sapiente. Atque, dignissimos!</p>
+            <div className="card my-3">
+                <div className="card-body">
+                    <div className="d-flex align-items-center">
+
+                    <h5 className="card-title">{notes.title}</h5>
+                    <i className="fas fa-trash mx-2"></i>
+                    <i className="fas fa-edit mx-2"></i>
+                    </div>
+                    <p className="card-text">{notes.description}</p>
                 </div>
             </div>
         </div>
