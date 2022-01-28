@@ -11,7 +11,90 @@ const NoteState = (props) => {
             "tag": "films",
             "date": "2022-01-27T12:02:05.566Z",
             "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
+          },
+          {
+            "_id": "61f289bdf6f59a03fb58667e",
+            "user": "61f18061abfd071b339ab754",
+            "title": "New Movie",
+            "description": "Pushpa RAj",
+            "tag": "films",
+            "date": "2022-01-27T12:02:05.566Z",
+            "__v": 0
           }
+
+          
     ]
     const [notes, setnotes] = useState(notesInitial);
     
