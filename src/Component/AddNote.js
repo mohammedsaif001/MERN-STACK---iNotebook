@@ -30,7 +30,7 @@ export default function AddNote() {
                 <input type="checkbox" className="form-check-input" id="exampleCheck1" onChange={onChange}/>
                 <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
             </div>
-            <button type="submit" className="btn btn-primary" onClick={handleClick}>Submit</button>
+            <button type="submit" className="btn btn-primary" onClick={handleClick}>ADD NOTE</button>
         </form>
     </div>;
 }
