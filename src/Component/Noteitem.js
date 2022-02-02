@@ -3,7 +3,7 @@ import noteContext from '../Context/Notes/noteContext';
 export default function Noteitem(props) {
     const context = useContext(noteContext);
     const {deleteNote} = context;
-    let { notes } = props
+    const { notes, updateNote } = props;
     return <>
         <div className="col-md-3">
             <div className="card my-3">
@@ -12,7 +12,7 @@ export default function Noteitem(props) {
 
                     <h5 className="card-title">{notes.title}</h5>
                     <i className="fas fa-trash mx-2" onClick={()=>{deleteNote(notes._id)}}></i>
-                    <i className="fas fa-edit mx-2"></i>
+                    <i className="far fa-edit mx-2" onClick={()=>{updateNote(notes)}}></i>
                     </div>
                     <p className="card-text">{notes.description}</p>
                 </div>
