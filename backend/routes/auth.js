@@ -25,7 +25,7 @@ router.post(
     //If there are errors, return Bad Request & the Errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({success,  errors: errors.array() });
     }
 
     try {
@@ -34,7 +34,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "Sorry a User with Email ALready Exists" });
+          .json({success, error: "Sorry a User with Email ALready Exists" });
       }
 
       const salt = await bcrypt.genSalt(10); //Adding Salt after HAsing
@@ -55,7 +55,8 @@ router.post(
       };
       const authToken = jwt.sign(data, JWT_SECRET);
 
-      res.json({ authToken }); //Generating token for client
+      success = true;
+      res.json({success,  authToken }); //Generating token for client
       // res.json(user);// Displaying record in response body
     } catch (error) {
       console.error(error.mesaage);
