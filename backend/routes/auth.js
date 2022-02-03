@@ -21,6 +21,7 @@ router.post(
     }),
   ],
   async (req, res) => {
+    let success = false;
     //If there are errors, return Bad Request & the Errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -81,6 +82,7 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (!user) {
+        success = false
         return res
           .status(400)
           .json({ error: "Login With Correct Credentials!!!" });
@@ -88,6 +90,7 @@ router.post(
 
       const pwdCompare = await bcrypt.compare(password, user.password); //Comapring password of user input and the one stored in DB
       if (!pwdCompare) {
+        success = false
         return res
           .status(400)
           .json({ error: "Login With Correct Credentials!!!" });
@@ -99,7 +102,8 @@ router.post(
         },
       };
       const authToken = jwt.sign(data, JWT_SECRET);
-      res.json({ authToken });
+      success = true;
+      res.json({ success, authToken })
     } catch (error) {
       console.error(error.mesaage);
       res.status(500).send("Internal Server Error");

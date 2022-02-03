@@ -9,6 +9,8 @@ import Home from './Component/Home';
 import About from './Component/About';
 import NoteState from './Context/Notes/NoteState';
 import Alert from './Component/Alert';
+import Signup from './Component/Signup';
+import Login from './Component/Login';
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
               </Route>
               <Route exact path="/about">
                 <About />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
               </Route>
             </Switch>
           </div>
