@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 const mongoURI = "mongodb+srv://saif:saif@cluster0.sy1yr.mongodb.net/mernstack?retryWrites=true&w=majority" //Change password & databaseName
 
 const connectToMongo = ()=>{
